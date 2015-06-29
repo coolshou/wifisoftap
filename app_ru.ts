@@ -11,7 +11,7 @@
     </message>
     <message>
         <location filename="aboutwindow.ui" line="46"/>
-        <source>qrc:/WiFi Hostapd AP.desktop</source>
+        <source>qrc:/wifisoftap.desktop</source>
         <translation></translation>
     </message>
     <message>
@@ -21,9 +21,9 @@
         <translation>Версия: 1.0</translation>
     </message>
     <message>
-        <source>WiFi Hostapd AP</source>
-        <translatorcomment>WiFi Hostapd AP</translatorcomment>
-        <translation type="obsolete">WiFi Hostapd AP</translation>
+        <source>WiFi Soft AP</source>
+        <translatorcomment>WiFi Soft AP</translatorcomment>
+        <translation type="obsolete">WiFi Soft AP</translation>
     </message>
     <message>
         <source>What is it?</source>
@@ -94,13 +94,13 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;For all&lt;/span&gt; -тестирование и багрепорты&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
-        <source>&lt;center&gt;&lt;h3&gt;WiFi Hostapd AP&lt;/h3&gt;
+        <source>&lt;center&gt;&lt;h3&gt;WiFi Soft AP&lt;/h3&gt;
 &lt;p&gt;
 &lt;h3&gt;Версия: 0.9.4 (QT4)&lt;/h3&gt;
 &lt;h3&gt;Автор: Козинцев Егор&lt;/h3&gt;
 &lt;/p&gt;
 &lt;/center&gt;</source>
-        <translation type="obsolete">&lt;center&gt;&lt;h3&gt;WiFi Hostapd AP&lt;/h3&gt;
+        <translation type="obsolete">&lt;center&gt;&lt;h3&gt;WiFi Soft AP&lt;/h3&gt;
 &lt;p&gt;
 &lt;h3&gt;Версия: 0.9.5.1 (QT4)&lt;/h3&gt;
 &lt;h3&gt;Автор: Козинцев Егор&lt;/h3&gt;
@@ -636,9 +636,9 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.ui" line="26"/>
         <location filename="mainwindow.cpp" line="64"/>
         <location filename="mainwindow.cpp" line="90"/>
-        <source>WiFi Hostapd AP</source>
-        <translatorcomment>WiFi Hostapd AP</translatorcomment>
-        <translation>WiFi Hostapd AP</translation>
+        <source>WiFi Soft AP</source>
+        <translatorcomment>WiFi Soft AP</translatorcomment>
+        <translation>WiFi Soft AP</translation>
     </message>
     <message utf8="true">
         <source>&lt;h3&gt;&lt;font color=&quot;red&quot;&gt;Отключена&lt;/font&gt;&lt;/h3&gt;</source>
@@ -901,8 +901,8 @@ p, li { white-space: pre-wrap; }
         <location filename="mainwindow.cpp" line="835"/>
         <location filename="mainwindow.cpp" line="840"/>
         <source>Programm</source>
-        <translatorcomment>WiFi Hostapd AP</translatorcomment>
-        <translation>WiFi Hostapd AP</translation>
+        <translatorcomment>WiFi Soft AP</translatorcomment>
+        <translation>WiFi Soft AP</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="569"/>
