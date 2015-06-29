@@ -25,7 +25,8 @@ void DisActiveAP::run()
 ////////////////////////////////////////////////////////////////////////////////////////////
 // Шаг 1: отключить интерфейс
 temp_QT = GlobalSettings->value("AP/Iface", "wlan0").toString().toLocal8Bit();
-temp = temp_QT.toAscii().data();
+//temp = temp_QT.toAscii().data();
+temp = temp_QT.toUtf8().data();
 strcat(command, temp);
 strcat(command, " down");
 console(command, tmp);

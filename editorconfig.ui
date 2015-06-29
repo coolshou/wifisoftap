@@ -35,7 +35,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Редактор конфигураций</string>
+   <string>configurations</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -59,7 +59,7 @@
     <item>
      <widget class="QRadioButton" name="Config_Set_View_1">
       <property name="text">
-       <string>Конфигурационный файл</string>
+       <string>Configuration file</string>
       </property>
       <property name="checked">
        <bool>true</bool>
@@ -82,7 +82,7 @@
     <item>
      <widget class="QRadioButton" name="Config_Set_View_2">
       <property name="text">
-       <string>Шаблон конфигурационного файла</string>
+       <string>Pattern of a configuration file</string>
       </property>
      </widget>
     </item>
@@ -119,7 +119,7 @@ p, li { white-space: pre-wrap; }
     </rect>
    </property>
    <property name="text">
-    <string>Сохранить</string>
+    <string>save</string>
    </property>
   </widget>
   <widget class="QPushButton" name="restore">
@@ -132,7 +132,7 @@ p, li { white-space: pre-wrap; }
     </rect>
    </property>
    <property name="text">
-    <string>Сброс</string>
+    <string>restore</string>
    </property>
   </widget>
   <widget class="QFrame" name="MaskFrame">
@@ -175,7 +175,7 @@ p, li { white-space: pre-wrap; }
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Сохранить шаблон</string>
+        <string>save</string>
        </property>
       </widget>
      </item>
@@ -188,7 +188,7 @@ p, li { white-space: pre-wrap; }
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Установить</string>
+        <string>load</string>
        </property>
       </widget>
      </item>
@@ -201,7 +201,7 @@ p, li { white-space: pre-wrap; }
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Удалить</string>
+        <string>remove</string>
        </property>
       </widget>
      </item>
@@ -241,7 +241,7 @@ p, li { white-space: pre-wrap; }
     <item row="0" column="2">
      <widget class="QRadioButton" name="Type_Config_2">
       <property name="text">
-       <string>DHCP сервер</string>
+       <string>DHCP Server</string>
       </property>
      </widget>
     </item>

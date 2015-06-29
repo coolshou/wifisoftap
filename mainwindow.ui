@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>WiFi Hostapd AP</string>
+   <string>WiFiSoftAP</string>
   </property>
   <property name="windowIcon">
    <iconset resource="images.qrc">
@@ -78,7 +78,7 @@
     </property>
     <widget class="QWidget" name="traffictab">
      <attribute name="title">
-      <string>Трафик</string>
+      <string>Traffic</string>
      </attribute>
      <widget class="QLabel" name="inTR">
       <property name="geometry">
@@ -90,7 +90,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>0 байт</string>
+       <string>0 Byte</string>
       </property>
       <property name="textFormat">
        <enum>Qt::PlainText</enum>
@@ -109,7 +109,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>0 байт</string>
+       <string>0 Byte</string>
       </property>
       <property name="textFormat">
        <enum>Qt::PlainText</enum>
@@ -192,34 +192,34 @@
       </attribute>
       <row>
        <property name="text">
-        <string>Траффик</string>
+        <string>Traffic</string>
        </property>
       </row>
       <row>
        <property name="text">
-        <string>Скорость</string>
+        <string>Speed</string>
        </property>
       </row>
       <row>
        <property name="text">
-        <string>Макс. скорость</string>
+        <string>Max. Speed</string>
        </property>
       </row>
       <column>
        <property name="text">
-        <string>Загрузка</string>
+        <string>Loading</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Выгрузка</string>
+        <string>Unloading</string>
        </property>
       </column>
      </widget>
     </widget>
     <widget class="QWidget" name="clientstab">
      <attribute name="title">
-      <string>Клиенты</string>
+      <string>Clients</string>
      </attribute>
      <widget class="QTableWidget" name="Clients">
       <property name="enabled">
@@ -285,17 +285,17 @@
       </column>
       <column>
        <property name="text">
-        <string>Активен с</string>
+        <string>active</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Устройство</string>
+        <string>Arrangement</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Действует до</string>
+        <string>Operates up to</string>
        </property>
       </column>
      </widget>
@@ -314,14 +314,14 @@
      <item>
       <widget class="QPushButton" name="Activate">
        <property name="text">
-        <string>Активация</string>
+        <string>Activate</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="Disactive">
        <property name="text">
-        <string>Дезактивация</string>
+        <string>Disactive</string>
        </property>
       </widget>
      </item>
@@ -347,12 +347,12 @@
      <x>0</x>
      <y>0</y>
      <width>410</width>
-     <height>25</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
     <property name="title">
-     <string>Файл</string>
+     <string>File</string>
     </property>
     <addaction name="Log"/>
     <addaction name="Exit"/>
@@ -365,7 +365,7 @@
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
-     <string>Настройка</string>
+     <string>Adjustment</string>
     </property>
     <addaction name="EditorW"/>
     <addaction name="OptW"/>
@@ -377,35 +377,32 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="Exit">
    <property name="text">
-    <string>Закрыть</string>
+    <string>close</string>
    </property>
   </action>
   <action name="EditorW">
    <property name="text">
-    <string>Редактор</string>
-   </property>
-   <property name="softKeyRole">
-    <enum>QAction::NoSoftKey</enum>
+    <string>editor</string>
    </property>
   </action>
   <action name="OptW">
    <property name="text">
-    <string>Настройки</string>
+    <string>Adjustments</string>
    </property>
   </action>
   <action name="HelpDOC">
    <property name="text">
-    <string>Документация</string>
+    <string>documentation</string>
    </property>
   </action>
   <action name="AboutW">
    <property name="text">
-    <string>О программе</string>
+    <string>About the program</string>
    </property>
   </action>
   <action name="Log">
    <property name="text">
-    <string>Журнал</string>
+    <string>History</string>
    </property>
   </action>
  </widget>

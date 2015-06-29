@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 ///////////////////////////////////////////////////////////////////////////////
-int Status = 0; // Статус точки доступа
+int Status = 0; // The status of a point of access
 QString ProgrammVersion = "1.1"; // Версия программы
 
 unsigned long long GlobalTrafficIn = 0; // Входящий траффик новый
@@ -42,11 +42,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    QSettings *GlobalSettings = new QSettings("/root/.WiFiHostapdAP/WiFi_Hostapd_AP.conf",QSettings::NativeFormat);
+    QSettings *GlobalSettings = new QSettings("/root/.WiFiSoftAP/WiFiSoftAP.conf",QSettings::NativeFormat);
     ui->setupUi(this);
 
     if(GlobalSettings->value("Programm/version", "").toString() != ProgrammVersion)
-            GlobalSettings->setValue("Programm/version", ProgrammVersion); // Обновляем версию в конфиге
+            GlobalSettings->setValue("Programm/version", ProgrammVersion); // We update the version in a config
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if(Platform.DisableDNSMASQinUbuntuPreciseInNM)
         CheckUbuntuPrecsisNM(); // Проверяем, не Ubuntu 12.04 ли это, где у меня забрали управление DNSMASQ?
@@ -61,7 +61,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QDateTime TimeNow;
     QString dateUNIXNow = QString::number(TimeNow.currentDateTime().toTime_t());
-    LogSystemAppend(QString("%1|%2|%3|%4").arg(tr("WiFi Hostapd AP"), dateUNIXNow, tr("Programm loaded and ready"), QString("0")));
+    LogSystemAppend(QString("%1|%2|%3|%4").arg(tr("WiFi Soft AP"), dateUNIXNow, tr("Programm loaded and ready"), QString("0")));
     checkStatus();
 
     QTimer *timer = new QTimer(this);
@@ -71,8 +71,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer *ClientUpdate = new QTimer(this);
     connect(ClientUpdate, SIGNAL(timeout()), this, SLOT(ClientPriseUpdate()));
     ClientUpdate->start(GlobalSettings->value("Programm/ClientsPriceUpdateTime", 5).toInt() * 1000);
-    // иконки?
-
+    // Icons?
     ui->Activate->setIcon(iconReturn("system-run"));
     ui->Disactive->setIcon(iconReturn("dialog-close"));
     ui->Exit->setIcon(iconReturn("application-exit"));
@@ -87,155 +86,155 @@ MainWindow::~MainWindow()
 {
     QDateTime TimeNow;
     QString dateUNIXNow = QString::number(TimeNow.currentDateTime().toTime_t());
-    LogSystemAppend(QString("%1|%2|%3|%4").arg(tr("WiFi Hostapd AP"), dateUNIXNow, tr("Programm closed"), QString("0")));
+    LogSystemAppend(QString("%1|%2|%3|%4").arg(tr("WiFi Soft AP"), dateUNIXNow, tr("Programm closed"), QString("0")));
     delete ui;
 }
 
 void MainWindow::FirsStartDetector() {
-QSettings *GlobalSettings = new QSettings("/root/.WiFiHostapdAP/WiFi_Hostapd_AP.conf",QSettings::NativeFormat);
-QDateTime TimeNow;
-QString dateUNIXNow;
+	QSettings *GlobalSettings = new QSettings("/root/.WiFiSoftAP/WiFiSoftAP.conf",QSettings::NativeFormat);
+	QDateTime TimeNow;
+	QString dateUNIXNow;
 
-if(GlobalSettings->value("Programm/FirstLoad", true).toBool()) {
-    OptionsWindow options;
-    options.on_APSave_clicked(true);
-    options.on_DHCPSave_clicked(true);
+	if(GlobalSettings->value("Programm/FirstLoad", true).toBool()) {
+		OptionsWindow options;
+		options.on_APSave_clicked(true);
+		options.on_DHCPSave_clicked(true);
 
-dateUNIXNow = QString::number(TimeNow.currentDateTime().toTime_t());
-LogSystemAppend(QString("%1|%2|%3|%4").arg(tr("Options"), dateUNIXNow, tr("Configs created succesfully."), QString("1")));
-GlobalSettings->setValue("Programm/FirstLoad", false);
-}
-delete GlobalSettings;
+		dateUNIXNow = QString::number(TimeNow.currentDateTime().toTime_t());
+		LogSystemAppend(QString("%1|%2|%3|%4").arg(tr("Options"), dateUNIXNow, tr("Configs created succesfully."), QString("1")));
+		GlobalSettings->setValue("Programm/FirstLoad", false);
+	}
+	delete GlobalSettings;
 }
 
 void MainWindow::ClientPriseUpdate() {
-// Слот обновления списка клиентов через заданный промежуток времени
-QSettings *GlobalSettings = new QSettings("/root/.WiFiHostapdAP/WiFi_Hostapd_AP.conf",QSettings::NativeFormat);
-QFile leaseIP("/var/lib/misc/dnsmasq.leases");
-QString LineRead;
-QStringList fields;
-QStringList horizontal;
-QStringList vertical;
-QTableWidgetItem *item = 0;
-QDateTime *date = 0;
-int i = 0;
-int f = 1;
-int timeconnect;
+	// Слот обновления списка клиентов через заданный промежуток времени
+	QSettings *GlobalSettings = new QSettings("/root/.WiFiSoftAP/WiFiSoftAP.conf",QSettings::NativeFormat);
+	QFile leaseIP("/var/lib/misc/dnsmasq.leases");
+	QString LineRead;
+	QStringList fields;
+	QStringList horizontal;
+	QStringList vertical;
+	QTableWidgetItem *item = 0;
+	QDateTime *date = 0;
+	int i = 0;
+	int f = 1;
+	int timeconnect;
 
-horizontal << tr("IP") << tr("Connected in") << tr("Device") << tr("Rent to");
-ui->Clients->setHorizontalHeaderLabels(horizontal);
-ui->Clients->verticalHeader()->setVisible(true);
+	horizontal << tr("IP") << tr("Connected in") << tr("Device") << tr("Rent to");
+	ui->Clients->setHorizontalHeaderLabels(horizontal);
+	ui->Clients->verticalHeader()->setVisible(true);
 
-if(leaseIP.open(QIODevice::ReadOnly)) {
-// файл успешно открыт. Теперь читаем построчно
-ui->Clients->setRowCount(0);
+	if(leaseIP.open(QIODevice::ReadOnly)) {
+		// файл успешно открыт. Теперь читаем построчно
+		ui->Clients->setRowCount(0);
 
-    while(!leaseIP.atEnd()) { // пока не достигнут конец файла
-    LineRead = leaseIP.readLine();
-    fields = LineRead.split(" ");
-    if(fields.size()>0) {
-     // Если эта строка не пуста, то заполняем поля в виджите
-    ui->Clients->setRowCount(ui->Clients->rowCount()+1);
-    vertical << QString("%1").arg(f);
-    f++;
-    ui->Clients->setVerticalHeaderLabels(vertical);
+			while(!leaseIP.atEnd()) { // пока не достигнут конец файла
+			LineRead = leaseIP.readLine();
+			fields = LineRead.split(" ");
+			if(fields.size()>0) {
+				 // Если эта строка не пуста, то заполняем поля в виджите
+				ui->Clients->setRowCount(ui->Clients->rowCount()+1);
+				vertical << QString("%1").arg(f);
+				f++;
+				ui->Clients->setVerticalHeaderLabels(vertical);
 
-    item = new QTableWidgetItem(fields.at(2));
-    ui->Clients->setItem(i,0,item);
+				item = new QTableWidgetItem(fields.at(2));
+				ui->Clients->setItem(i,0,item);
 
-    timeconnect = fields.at(0).toInt();
-    date = new QDateTime;
-    date->setTime_t(timeconnect);
-    item = new QTableWidgetItem(date->toString("hh:mm:ss"));
-    ui->Clients->setItem(i,1,item);
+				timeconnect = fields.at(0).toInt();
+				date = new QDateTime;
+				date->setTime_t(timeconnect);
+				item = new QTableWidgetItem(date->toString("hh:mm:ss"));
+				ui->Clients->setItem(i,1,item);
 
-    item = new QTableWidgetItem(fields.at(1));
-    ui->Clients->setItem(i,2,item);
+				item = new QTableWidgetItem(fields.at(1));
+				ui->Clients->setItem(i,2,item);
 
-    timeconnect = fields.at(0).toInt();
+				timeconnect = fields.at(0).toInt();
 
-    switch(GlobalSettings->value("DHCP/IP_time", 2).toInt()) {
-        case(0): timeconnect += 10*60; break;
-        case(1): timeconnect += 30*60; break;
-        case(2): timeconnect += 60*60; break;
-        case(3): timeconnect += 120*60; break;
-        case(4): timeconnect += 6*60*60; break;
-        case(5): timeconnect += 12*60*60; break;
-    }
+				switch(GlobalSettings->value("DHCP/IP_time", 2).toInt()) {
+					case(0): timeconnect += 10*60; break;
+					case(1): timeconnect += 30*60; break;
+					case(2): timeconnect += 60*60; break;
+					case(3): timeconnect += 120*60; break;
+					case(4): timeconnect += 6*60*60; break;
+					case(5): timeconnect += 12*60*60; break;
+				}
 
-    date = new QDateTime;
-    date->setTime_t(timeconnect);
-    item = new QTableWidgetItem(date->toString("hh:mm:ss"));
-    ui->Clients->setItem(i,3,item);
+				date = new QDateTime;
+				date->setTime_t(timeconnect);
+				item = new QTableWidgetItem(date->toString("hh:mm:ss"));
+				ui->Clients->setItem(i,3,item);
 
-    i++;
-} // если строка пуста, чтож... очищаем список и идём дальше
-fields.clear();
-}
-} // не удалось открыть файл
-leaseIP.close();
-delete GlobalSettings;
+				i++;
+			} // если строка пуста, чтож... очищаем список и идём дальше
+			fields.clear();
+		}
+	} // не удалось открыть файл
+	leaseIP.close();
+	delete GlobalSettings;
 }
 
 void MainWindow::TrafficUpdate() {
-QString tempt_QT;
-QSettings *GlobalSettings = new QSettings("/root/.WiFiHostapdAP/WiFi_Hostapd_AP.conf",QSettings::NativeFormat);
-QString line;
-QStringList Input;
-QStringList Elements;
-int i = 0;
-tempt_QT = GlobalSettings->value("AP/Iface", "wlan0").toString().toLocal8Bit();
-ui->TrafficTable->horizontalHeader()->setVisible(true);
+	QString tempt_QT;
+	QSettings *GlobalSettings = new QSettings("/root/.WiFiSoftAP/WiFiSoftAP.conf",QSettings::NativeFormat);
+	QString line;
+	QStringList Input;
+	QStringList Elements;
+	int i = 0;
+	tempt_QT = GlobalSettings->value("AP/Iface", "wlan0").toString().toLocal8Bit();
+	ui->TrafficTable->horizontalHeader()->setVisible(true);
 
-QFile file_to_open("/proc/net/dev");
-file_to_open.open(QIODevice::ReadOnly);
+	QFile file_to_open("/proc/net/dev");
+	file_to_open.open(QIODevice::ReadOnly);
 
-if(file_to_open.isOpen()) {
+	if(file_to_open.isOpen()) {
 
-QTextStream in(&file_to_open);
-line = in.read(102400);
-line.replace("  ", " ");
-line.replace("  ", " ");
-line.replace("  ", " ");
-line.replace("  ", " ");
-line.replace("  ", " ");
-line.replace("  ", " ");
-line.replace("  ", " ");
-line.replace("  ", " ");
+	QTextStream in(&file_to_open);
+	line = in.read(102400);
+	line.replace("  ", " ");
+	line.replace("  ", " ");
+	line.replace("  ", " ");
+	line.replace("  ", " ");
+	line.replace("  ", " ");
+	line.replace("  ", " ");
+	line.replace("  ", " ");
+	line.replace("  ", " ");
 
-Input = line.split("\n");
-line.clear();
+	Input = line.split("\n");
+	line.clear();
 
-for(i=0;i<Input.count();i++) {
- // Проверяем, чтобы строка не начиналась с пробела
- if(Input.at(i).startsWith(" "))
-     line = Input.at(i).mid(1, Input.at(i).length()-1);
- else
-     line = Input.at(i);
+	for(i=0;i<Input.count();i++) {
+	 // Проверяем, чтобы строка не начиналась с пробела
+	 if(Input.at(i).startsWith(" "))
+		 line = Input.at(i).mid(1, Input.at(i).length()-1);
+	 else
+		 line = Input.at(i);
 
- // проверяем, относится ли данная строка к нашему интерфейсу
- if(line.startsWith(tempt_QT)) {
- // Да, относится
- Elements = line.split(" ");
+	 // проверяем, относится ли данная строка к нашему интерфейсу
+	 if(line.startsWith(tempt_QT)) {
+	 // Да, относится
+	 Elements = line.split(" ");
 
- // Меняем местами траффик
- GlobalTrafficInOld = GlobalTrafficIn;
- GlobalTrafficOutOld = GlobalTrafficOut;
+	 // Меняем местами траффик
+	 GlobalTrafficInOld = GlobalTrafficIn;
+	 GlobalTrafficOutOld = GlobalTrafficOut;
 
- // Устанавливаем новый траффик
- GlobalTrafficIn = Elements.at(1).toLongLong();
- GlobalTrafficOut = Elements.at(9).toLongLong();
- }
-}
+	 // Устанавливаем новый траффик
+	 GlobalTrafficIn = Elements.at(1).toLongLong();
+	 GlobalTrafficOut = Elements.at(9).toLongLong();
+	 }
+	}
 
-} else { qDebug() <<"error!"; }
+	} else { qDebug() <<"error!"; }
 
-file_to_open.close();
+	file_to_open.close();
 
 
-SetTrafficInformation();
+	SetTrafficInformation();
 
-delete GlobalSettings;
+	delete GlobalSettings;
 }
 
 void MainWindow::SetTrafficInformation() {
@@ -521,37 +520,37 @@ void MainWindow::checkStatus() {
     int tempI = 0, i=0, tempI2 = 0;
     QDateTime TimeNow;
     QString dateUNIXNow;
-    QSettings *GlobalSettings = new QSettings("/root/.WiFiHostapdAP/WiFi_Hostapd_AP.conf",QSettings::NativeFormat); // создание нового объекта
+    QSettings *GlobalSettings = new QSettings("/root/.WiFiSoftAP/WiFiSoftAP.conf",QSettings::NativeFormat); // Creation of new object
     bool starting = true;
     bool test;
     QString temp_QT;
     qDebug() << "Testing AP... ";
     ////////////////////////////////////////////////////////////////////////////////////////////
-    // Активирована ли точка доступа?
+    // Whether the point of access is activated?
     ////////////////////////////////////////////////////////////////////////////////////////////
-    // точка доступа активирована, если
-    // 1. Статус  устройства
+    // The point of access is activated, if
+// 1. status  Arrangements
     ////////////////////////////////////////////////////////////////////////////////////////////
     CheckProcess IFace(1,GlobalSettings->value("AP/Iface", "wlan0").toString());
     if(!IFace.init()) { starting=false; a[0]=0; qDebug() << "DEVICE - " << "OFF"; }
     else { qDebug() << "DEVICE - " << "ON"; a[0]=1; }
 
-// 2. Статус DNSMASQ
+// 2. status DNSMASQ
  ////////////////////////////////////////////////////////////////////////////////////////////
-        CheckProcess DNSMASQcheck("dnsmasq");
-        test = DNSMASQcheck.init();
-        if(test) { qDebug() << "DNSMASQ - " << "ON"; a[1]=1; }
-        else { starting=false; a[1]=0; qDebug() << "DNSMASQ - " << "OFF"; }
+	CheckProcess DNSMASQcheck("dnsmasq");
+	test = DNSMASQcheck.init();
+	if(test) { qDebug() << "DNSMASQ - " << "ON"; a[1]=1; }
+	else { starting=false; a[1]=0; qDebug() << "DNSMASQ - " << "OFF"; }
 
 
-// 3. Статус Hostapd
+// 3. status Hostapd
     ////////////////////////////////////////////////////////////////////////////////////////////
     CheckProcess HOSTAPDcheck("hostapd");
     test = HOSTAPDcheck.init();
     if(!test) { starting=false; a[2]=0; qDebug() << "HOSTAPD - " << "OFF"; }
         else { qDebug() << "HOSTAPD - " << "ON"; a[2]=1; }
 
-// 4. Статус IP Forwarding
+// 4. status IP Forwarding
     ////////////////////////////////////////////////////////////////////////////////////////////
     CheckProcess IPForwarding(2, "");
     if(!IPForwarding.init())   { starting=false; a[3]=0; qDebug() << "IP FORWARDING - " << "OFF"; }
@@ -559,7 +558,7 @@ void MainWindow::checkStatus() {
 
     ////////////////////////////////////////////////////////////////////////////////////////////
     if(starting==true) {
-        ui->identificator->setText(tr("<h3><font color=\"green\">Активировано</font></h3>"));
+        ui->identificator->setText(tr("<h3><font color=\"green\">It is activated</font></h3>"));
         ui->StatusIcon->setPixmap(QPixmap(":/pic/icons/dialog-ok-apply.png"));
         ui->Activate->setEnabled(false);
         ui->Disactive->setEnabled(true);
@@ -569,7 +568,7 @@ void MainWindow::checkStatus() {
         LogSystemAppend(QString("%1|%2|%3|%4").arg(tr("Programm"), dateUNIXNow, tr("AP online"), QString("0")));
 
     } else {
-        ui->identificator->setText(tr("<h3><font color=\"red\">Отключена</font></h3>"));
+        ui->identificator->setText(tr("<h3><font color=\"red\">It is disconnected</font></h3>"));
         ui->StatusIcon->setPixmap(QPixmap(":/pic/icons/dialog-close.png"));
         ui->Activate->setEnabled(true);
         ui->Disactive->setEnabled(false);
@@ -606,7 +605,13 @@ void MainWindow::on_EditorW_activated()
 }
 
 void MainWindow::FromIndicator() {
-    sleep(1);
+    //sleep(1);
+    QWaitCondition wc;
+	QMutex mutex;
+	QMutexLocker locker(&mutex);
+	wc.wait(&mutex, 1000);
+	
+	//QTest::qSleep ( 1000 )
     checkStatus();
 }
 
@@ -632,14 +637,14 @@ void MainWindow::LogSystemAppend(QString Input) {
     QDate dateNow;
     TempString  = dateNow.currentDate().toString("yyyy.MM.d");
 ////////////////////////////////////////////////////////////////////////////////////////
-// Логи лежат в /root/.WiFiHostapdAP/logs/сегодняшняя дата/log.txt
+// Логи лежат в /root/.WiFiSoftAP/logs/сегодняшняя дата/log.txt
 ////////////////////////////////////////////////////////////////////////////////////////
-// 1. Идём в папку /root/.WiFiHostapdAP/logs/
+// 1. Идём в папку /root/.WiFiSoftAP/logs/
 ////////////////////////////////////////////////////////////////////////////////////////
    directory.cd("/root");
-if(!directory.cd(".WiFiHostapdAP")) {
-    directory.mkdir(QString("%1").arg(".WiFiHostapdAP"));
-    directory.cd(".WiFiHostapdAP"); }
+if(!directory.cd(".WiFiSoftAP")) {
+    directory.mkdir(QString("%1").arg(".WiFiSoftAP"));
+    directory.cd(".WiFiSoftAP"); }
 if(!directory.cd("logs")) {
     directory.mkdir(QString("%1").arg("logs"));
     directory.cd("logs"); }
@@ -659,7 +664,7 @@ if(!directory.cd("logs")) {
 //////////////////////////////////////////////////////////////////////////////////////////
 //// 3. Открываем файл, чтобы дозаписывать строки
 //////////////////////////////////////////////////////////////////////////////////////////
-    QFile LogFileNew(QString("%1%2%3").arg("/root/.WiFiHostapdAP/logs/", TempString, "/log.txt"));
+    QFile LogFileNew(QString("%1%2%3").arg("/root/.WiFiSoftAP/logs/", TempString, "/log.txt"));
     LogFileNew.open(QIODevice::Append | QIODevice::Text | QIODevice::Unbuffered);
     QTextStream LogFileOout(&LogFileNew);
 //////////////////////////////////////////////////////////////////////////////////////////

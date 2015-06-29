@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Для работы этому приложению необходимы привелегии суперпользователя. Пожалуйста, выберите способ получения привелегий суперпользователя:</string>
+    <string>Superuser are necessary for work for this appendix. Please, choose a way of reception the superuser:</string>
    </property>
    <property name="wordWrap">
     <bool>true</bool>
@@ -39,7 +39,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Запуск</string>
+    <string>Start</string>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBox">

@@ -53,7 +53,7 @@
     </size>
    </property>
    <property name="text">
-    <string>Выход</string>
+    <string>Output</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">

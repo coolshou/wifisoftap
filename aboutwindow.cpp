@@ -6,7 +6,7 @@ AboutWindow::AboutWindow(QWidget *parent) :
     ui(new Ui::AboutWindow)
 {
     QSettings *GlobalSettings = new QSettings("/root/.WiFiHostapdAP/WiFi_Hostapd_AP.conf",QSettings::NativeFormat);
-    int Translate = GlobalSettings->value("Programm/Language", 0).toInt(); // 0 - автоматически 1 - английский 2 - русский
+    int Translate = GlobalSettings->value("Programm/Language", 0).toInt(); // 0 - automatically 1 - English 2 - Russian
    QUrl Trans;
 
    ui->setupUi(this);

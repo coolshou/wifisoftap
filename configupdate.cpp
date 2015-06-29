@@ -26,14 +26,11 @@ class ConfigUpdate : public QThread
 };
 
 void ConfigUpdate::run() {
-QSettings *GlobalSettings = new QSettings("WiFi_Hostapd_AP.conf",QSettings::NativeFormat);
+	QSettings *GlobalSettings = new QSettings("WiFiSoft.conf",QSettings::NativeFormat);
 // Класс отвечает за обновление конфигурационных файлов. Его цель - грамотно записать в файл данные
 // Мы будем писать по шаблону. Шаблон задаётся пользователем. Его мы и используем.
 // Шаблоны хранятся в области памяти, либо в файлах.
 // Берём шаблон, читаем его. Заменяем, перезаписываем конфиш.
 
-
-
-
-delete GlobalSettings;
-    }
+	delete GlobalSettings;
+}

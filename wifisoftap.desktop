@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=wifisoftap
+Name[ru_RU]=wifisoftap
+Comment=WiFi Soft AP
+Exec=wifisoftap
+Icon=WiFi_logo.png
+Type=Application
+Categories=QT;Utility;;
+StartupNotify=true
+X-Ayatana-Desktop-Shortcuts=New
+

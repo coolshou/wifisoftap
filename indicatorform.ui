@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Выполняется...</string>
+   <string>Running...</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -65,7 +65,7 @@
     </size>
    </property>
    <property name="text">
-    <string>Выход</string>
+    <string>Exit</string>
    </property>
   </widget>
  </widget>

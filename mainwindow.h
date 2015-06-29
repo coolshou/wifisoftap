@@ -18,12 +18,16 @@
 #include <QFile>
 #include <QDir>
 #include "logsystem.h"
-#include <QTextIStream>
+#include <QTextStream>
 #include "iostream"
 #include <QDesktopServices>
 #include <QUrl>
 #include "CheckProcess.cpp"
 #include "PlatformVariable.cpp"
+
+#include <QWaitCondition>
+#include <QMutex>
+#include <QMutexLocker>
 
 namespace Ui {
     class MainWindow;

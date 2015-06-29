@@ -26,7 +26,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Журнал</string>
+   <string>History</string>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
@@ -45,7 +45,7 @@
        <item>
         <widget class="QLabel" name="LabelLogWindowDataSet">
          <property name="text">
-          <string>Дата:</string>
+          <string>Date:</string>
          </property>
         </widget>
        </item>
@@ -55,7 +55,7 @@
        <item>
         <widget class="QPushButton" name="DelLog">
          <property name="text">
-          <string>Стереть</string>
+          <string>Delete</string>
          </property>
         </widget>
        </item>
@@ -75,7 +75,7 @@
        <item>
         <widget class="QPushButton" name="ExitLogButton">
          <property name="text">
-          <string>Закрыть</string>
+          <string>Exit</string>
          </property>
         </widget>
        </item>
@@ -145,7 +145,7 @@
        </row>
        <column>
         <property name="text">
-         <string>Тип</string>
+         <string>Type</string>
         </property>
        </column>
        <column>
@@ -155,12 +155,12 @@
        </column>
        <column>
         <property name="text">
-         <string>Время</string>
+         <string>Time</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>Сообщение</string>
+         <string>The message</string>
         </property>
        </column>
       </widget>

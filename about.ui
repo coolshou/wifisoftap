@@ -36,7 +36,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Закрыть</string>
+    <string>close</string>
    </property>
   </widget>
  </widget>
