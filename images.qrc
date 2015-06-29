@@ -12,6 +12,6 @@
         <file>pic/icons/network-connect.png</file>
         <file>pic/icons/system-run.png</file>
         <file>pic/icons/system-shutdown.png</file>
-        <file>WiFiSoftAP.desktop</file>
+        <file>wifisoftap.desktop</file>
     </qresource>
 </RCC>
