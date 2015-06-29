@@ -42,7 +42,7 @@ FORMS    += mainwindow.ui \
     logsystem.ui
 
 OTHER_FILES += \
-    pic/WiFi_logo_litle.png \
+    pic/wifisoftap_litle.png \
     app_ru.qm \
     app_en.qm
 

@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>pic/WiFi_logo.png</file>
-        <file>pic/WiFi_logo_litle.png</file>
+        <file>pic/wifisoftap.png</file>
+        <file>pic/wifisoftap_litle.png</file>
         <file>pic/icons/application-exit.png</file>
         <file>pic/icons/applications-system.png</file>
         <file>pic/icons/configure.png</file>

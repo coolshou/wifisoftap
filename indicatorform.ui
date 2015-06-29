@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>pic/WiFi_logo_litle.png</normaloff>pic/WiFi_logo_litle.png</iconset>
+    <normaloff>pic/wifisoftap_litle.png</normaloff>pic/wifisoftap_litle.png</iconset>
   </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">

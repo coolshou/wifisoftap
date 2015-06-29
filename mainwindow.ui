@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="images.qrc">
-    <normaloff>:/pic/WiFi_logo_litle.png</normaloff>:/pic/WiFi_logo_litle.png</iconset>
+    <normaloff>:/pic/wifisoftap_litle.png</normaloff>:/pic/wifisoftap_litle.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="identificator">
