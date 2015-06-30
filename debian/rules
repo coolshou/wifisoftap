@@ -38,4 +38,7 @@ override_dh_auto_install:
 	#image
 	mkdir -p debian/$(DEB_SOURCE)/usr/share/pixmaps/
 	cp pic/wifisoftap.png debian/$(DEB_SOURCE)/usr/share/pixmaps/
-	
+	#html
+	mkdir -p debian/$(DEB_SOURCE)/usr/share/wifisoftap/translations/
+	cp docs/about_en.html debian/$(DEB_SOURCE)/usr/share/wifisoftap/translations/
+	cp docs/about_ru.html debian/$(DEB_SOURCE)/usr/share/wifisoftap/translations/
