@@ -5,7 +5,7 @@ Comment=WiFi Soft AP
 Exec=wifisoftap
 Icon=wifisoftap.png
 Type=Application
-Categories=QT;Utility;;
+Categories=Network;QT;
 StartupNotify=true
 X-Ayatana-Desktop-Shortcuts=New
 
