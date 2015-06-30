@@ -1,0 +1,17 @@
+Source: wifisoftap
+Section: net
+Priority: optional
+Maintainer: jimmy <jimmy@jimmy-alpha>
+Build-Depends: debhelper (>= 9), qt4-qmake | qt5-qmake
+Standards-Version: 3.9.5
+Homepage: https://github.com/coolshou/wifisoftap
+#Vcs-Git: git://anonscm.debian.org/collab-maint/wifisoftap.git
+Vcs-Browser: https://github.com/coolshou/wifisoftap
+
+Package: wifisoftap
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, wireless-tools, bridge-utils, hostapd, dnsmasq
+Description: Easily create a WiFi access point (based on Hostpad)
+ Allows you to easily create a WiFi access point, standard 802.11b/g based on Hostpad. 
+ Written in C++ and QT4.7. 
+ It is designed to run on operating systems based on Linux kernel for desktop and notebook
