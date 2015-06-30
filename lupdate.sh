@@ -1,2 +1,2 @@
 #!/bin/sh
-lupdate -verbose WiFiSoftAP.pro 
+lupdate -verbose wifisoftap.pro 

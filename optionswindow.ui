@@ -29,7 +29,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="programm">
       <attribute name="title">
@@ -48,7 +48,7 @@
         <string>Parameters of the interface</string>
        </property>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget1">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -118,7 +118,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget2">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -188,7 +188,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget3">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -239,13 +239,13 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget4">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>361</y>
          <width>531</width>
-         <height>29</height>
+         <height>30</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_22">
@@ -303,13 +303,13 @@
         <string>Parameters of a access point</string>
        </property>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget5">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>30</y>
          <width>531</width>
-         <height>29</height>
+         <height>32</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -345,7 +345,7 @@
            <string comment="Адрес роутера"/>
           </property>
           <property name="inputMask">
-           <string>000.000.000.000; </string>
+           <string>000.000.000.000</string>
           </property>
           <property name="text">
            <string>192.168.110.1</string>
@@ -360,13 +360,13 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget6">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>60</y>
          <width>531</width>
-         <height>29</height>
+         <height>32</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -399,7 +399,7 @@
            </sizepolicy>
           </property>
           <property name="inputMask">
-           <string>000.000.000.000; </string>
+           <string>000.000.000.000</string>
           </property>
           <property name="text">
            <string>255.255.255.0</string>
@@ -411,7 +411,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget7">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -470,20 +470,20 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget8">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>120</y>
          <width>531</width>
-         <height>29</height>
+         <height>32</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="QLabel" name="ap_4">
           <property name="text">
-           <string>SSID (имя точки доступа)</string>
+           <string>SSID (Access Point Name)</string>
           </property>
          </widget>
         </item>
@@ -518,7 +518,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget9">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -647,7 +647,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget10">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -751,7 +751,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget11">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -805,7 +805,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget12">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -837,7 +837,7 @@
         </item>
         <item>
          <widget class="QComboBox" name="TypeAP">
-		<item>
+          <item>
            <property name="text">
             <string notr="true">a</string>
            </property>
@@ -866,7 +866,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget13">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -905,7 +905,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget14">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -956,13 +956,13 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget15">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>320</y>
          <width>531</width>
-         <height>29</height>
+         <height>32</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -995,13 +995,13 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget16">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>361</y>
          <width>531</width>
-         <height>29</height>
+         <height>30</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_14">
@@ -1059,13 +1059,13 @@
         <string>distribution IP addresses</string>
        </property>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget17">
        <property name="geometry">
         <rect>
          <x>11</x>
          <y>41</y>
          <width>531</width>
-         <height>29</height>
+         <height>32</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_15">
@@ -1101,7 +1101,7 @@
            <string comment="Адрес роутера"/>
           </property>
           <property name="inputMask">
-           <string>000.000.000.000; </string>
+           <string>000.000.000.000</string>
           </property>
           <property name="text">
            <string>192.168.110.2</string>
@@ -1126,7 +1126,7 @@
            <string comment="Адрес роутера"/>
           </property>
           <property name="inputMask">
-           <string>000.000.000.000; </string>
+           <string>000.000.000.000</string>
           </property>
           <property name="text">
            <string>192.168.0.255</string>
@@ -1141,7 +1141,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget18">
        <property name="geometry">
         <rect>
          <x>11</x>
@@ -1215,7 +1215,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget19">
        <property name="geometry">
         <rect>
          <x>11</x>
@@ -1284,13 +1284,13 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget20">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>361</y>
          <width>531</width>
-         <height>29</height>
+         <height>30</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_18">
@@ -1330,7 +1330,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget21">
        <property name="geometry">
         <rect>
          <x>10</x>

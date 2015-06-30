@@ -43,7 +43,7 @@ p, li { white-space: pre-wrap; }
      </property>
      <property name="source">
       <url>
-       <string>qrc:/WiFiSoftAP.desktop</string>
+       <string>qrc:/wifisoftap.desktop</string>
       </url>
      </property>
      <property name="openLinks">

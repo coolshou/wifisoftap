@@ -6,7 +6,7 @@
 #include <QDir>
 
 const int N = 300;
-const QString PathForTranslations = "./";
+const QString PathForTranslations = "./translation";
 
 
 int main(int argc, char *argv[])
@@ -38,7 +38,7 @@ qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; borde
 	//TODO: parser theme name from args
 	QApplication::setStyle("plastique");
 	
-    QApplication a(argc, argv);
+    QApplication qappWiFiSoftAp(argc, argv);
     QSettings *LocalSettings = new QSettings(QString("%1%2").arg(QDir::homePath(), "/.WiFiSoftAP/WiFiSoftAP.conf"), QSettings::NativeFormat);
     //QTextCodec* codec = QTextCodec::codecForName("UTF-8");
     //QTextCodec::setCodecForCStrings(codec);
@@ -59,12 +59,12 @@ qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; borde
 
   if(test==0) {
         qDebug() << "USER: get ROOT ... ";
-        if(LocalSettings->value("Programm/suCommand", true).toBool() || argument.last() == "-su") {
-            LocalSettings->setValue("Programm/suCommand", false);
+        if(LocalSettings->value("Program/suCommand", true).toBool() || argument.last() == "-su") {
+            LocalSettings->setValue("Program/suCommand", false);
             GetRoot ppp; ppp.exec(); }
             
         com.clear();
-        com = LocalSettings->value("Programm/rootCommand", "gksu ").toString();
+        com = LocalSettings->value("Program/rootCommand", "gksu ").toString();
 
         qDebug() << "Get root with " << com << ".";
 
@@ -81,29 +81,46 @@ qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; borde
         bb.clear();
 
         system(command);
-        a.exit();
+        qappWiFiSoftAp.exit();
     } else {
 		QSettings *GlobalSettings = new QSettings("/root/.WiFiSoftAP/WiFiSoftAP.conf",QSettings::NativeFormat);
 		qDebug() << "ROOT: ok. Begin ... ";
-		// НАстройки перевода:
-		int Translate = GlobalSettings->value("Programm/Language", 0).toInt(); // 0 - автоматически 1 - английский 2 - русский
+        // Setting the translation:
+        int Translate = GlobalSettings->value("Program/Language", 0).toInt(); // 0 - automatic 1 - English 2 - Russian
 		QString Trans;
 		if(Translate==0) Trans = "app_" + QLocale::system().name();
 		else if(Translate==1) Trans = "app_en";
 		else if(Translate==2) Trans = "app_ru";
 		else Trans = "app_en";
 
-		// Устанавливаем перевод
-				QTranslator appTranslator;
-				appTranslator.load(QString("%1%2").arg(PathForTranslations, Trans), qApp->applicationDirPath());
-				a.installTranslator(&appTranslator);
-				GlobalSettings->setValue("Programm/suCommand", false);
+        // Set translation
+        QTranslator appTranslator;
+        appTranslator.load(QString("%1%2").arg(PathForTranslations, Trans), qApp->applicationDirPath());
+        qappWiFiSoftAp.installTranslator(&appTranslator);
+        GlobalSettings->setValue("Program/suCommand", false);
 
-				MainWindow w;
-				w.show();
+        //system tray icon
+        /*
+        if (!QSystemTrayIcon::isSystemTrayAvailable()) {
+            QMessageBox::critical(0, QObject::tr("Systray"),
+                                  QObject::tr("I couldn't detect any system tray "
+                                              "on this system."));
+            return 1;
+        }
+        */
+        //start main window
+        MainWindow w;
+        w.show();
+		
+		int exitCode;
+		{
+			exitCode = qappWiFiSoftAp.exec();
+		}
+
 		delete GlobalSettings;
 		delete LocalSettings;
-		return a.exec();
+		
+        return exitCode; 
     }
 }
 

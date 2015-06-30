@@ -17,7 +17,8 @@ HEADERS  += mainwindow.h \
     editorconfig.h \
     dialogindicator.h \
     getroot.h \
-    logsystem.h
+    logsystem.h \
+    version.h
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -44,7 +45,9 @@ FORMS    += mainwindow.ui \
 OTHER_FILES += \
     pic/wifisoftap_litle.png \
     translation/app_ru.qm \
-    translation/app_en.qm
+    translation/app_en.qm \
+    about/about_en.html \
+    about/about_ru.html
 
 TRANSLATIONS += translation/app_ru.ts \
     translation/app_en.ts

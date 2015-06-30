@@ -13,5 +13,6 @@
         <file>pic/icons/system-run.png</file>
         <file>pic/icons/system-shutdown.png</file>
         <file>wifisoftap.desktop</file>
+        <file>pic/icons/wifisoftap.png</file>
     </qresource>
 </RCC>
