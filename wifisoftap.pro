@@ -43,11 +43,11 @@ FORMS    += mainwindow.ui \
 
 OTHER_FILES += \
     pic/wifisoftap_litle.png \
-    app_ru.qm \
-    app_en.qm
+    translation/app_ru.qm \
+    translation/app_en.qm
 
-TRANSLATIONS += app_ru.ts\
-app_en.ts
+TRANSLATIONS += translation/app_ru.ts \
+    translation/app_en.ts
 
 RC_FILE = myapp.rc
 
